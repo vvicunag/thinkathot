@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 
 const { connect } = require("./database/connection");
+const User = require("./models/User");
 const routes = require("./routes");
 
 const PORT = process.env.PORT || 4000;
@@ -18,3 +19,4 @@ app.use(routes);
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+

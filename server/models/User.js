@@ -34,6 +34,36 @@ const userSchema = new Schema(
           id: false,
     }
 );
+
+const schema = new Schema(userSchema);
+
+schema.pre("save", convertToLowercase);
+
+const User = model("User", schema);
+
+
+const seed = async () => {
+    try {
+      const collection = await User.find({});
+  
+      if (collection.length === 0) {
+        await User.insertMany([
+          { username: 'Pedro', email: 'pedro@gmail.com' },
+          { username: 'Juan', email: 'juan@gmail.com' },
+          { username: 'Diego', email: 'diego@gmail.com' },
+        ]);
+      }
+      console.log('Already populated');
+    } catch (error) {
+      console.log('Error while seeding the data, ', error);
+    }
+  };
+
+seed();
+
+module.exports = User;
+
+
 // TODO: Create a virtual called `friendCount` that retrieves the length of the user's `friends` array field on query.
 // userSchema
 //   .virtual('fullName')
