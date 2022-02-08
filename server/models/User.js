@@ -39,7 +39,7 @@ const schema = new Schema(userSchema);
 
 schema.pre("save", convertToLowercase);
 
-const User = model("User", schema);
+const User = model("user", schema);
 
 // seed users to test database
 const seed = async () => {
@@ -76,4 +76,12 @@ module.exports = User;
 //     const first = v.split(' ')[0];
 //     const last = v.split(' ')[1];
 //     this.set({ first, last });
+//   });
+
+// // Create a virtual property `upvoteCount` that gets the amount of comments per user
+// postSchema
+//   .virtual('upvoteCount')
+//   // Getter
+//   .get(function () {
+//     return this.meta.upvotes;
 //   });

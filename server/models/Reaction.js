@@ -1,9 +1,8 @@
 const { Schema, model } = require('mongoose');
-const Reaction = require('./Reaction');
 
-const thoughtSchema = new Schema(
+const reactionSchema = new Schema(
     {
-        thoughtText: {
+        reactionBody: {
             type: String, 
             required: true, 
             minlength: 1,
@@ -18,7 +17,6 @@ const thoughtSchema = new Schema(
             type: String,
             required: true,
         },
-        reactions: [Reaction],
     },
     {
         toJSON: {
@@ -32,25 +30,5 @@ const thoughtSchema = new Schema(
 const schema = new Schema(thoughtSchema);
 
 const Thought = model("thought", schema);
-
-// seed thoughts to test database
-// const seed = async () => {
-//     try {
-//       const collection = await User.find({});
-  
-//       if (collection.length === 0) {
-//         await User.insertMany([
-//           { username: 'Pedro', email: 'pedro@gmail.com' },
-//           { username: 'Juan', email: 'juan@gmail.com' },
-//           { username: 'Diego', email: 'diego@gmail.com' },
-//         ]);
-//       }
-//       console.log('Already populated');
-//     } catch (error) {
-//       console.log('Error while seeding the data: ', error);
-//     }
-//   };
-
-// seed();
 
 module.exports = Thought;

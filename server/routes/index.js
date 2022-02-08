@@ -1,16 +1,8 @@
-const { Router } = require("express");
-// const {
-//   saveOrder,
-//   getOrder,
-//   addPizzaToOrder,
-//   getOrdersWithPizzaCount,
-// } = require("../controllers");
+const router = require('express').Router();
+const userRoutes = require('./userRoutes.js');
+//const thoughtRoutes = require('./thoughtRoutes'); 
 
-const router = Router();
-
-// router.put("/order/:id", addPizzaToOrder);
-// router.get("/order/quantity", getOrdersWithPizzaCount);
-// router.post("/order", saveOrder);
-// router.get("/order", getOrder);
+router.use('/api/users', userRoutes);
+//router.use('/api/thoughts', thoughtRoutes);
 
 module.exports = router;
