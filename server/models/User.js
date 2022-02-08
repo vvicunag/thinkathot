@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const { convertToLowercase, validateEmail } = require("../utils");
+const { validateEmail } = require("../utils");
 
 const userSchema = new Schema(
     {
@@ -37,7 +37,10 @@ const userSchema = new Schema(
 
 const schema = new Schema(userSchema);
 
-schema.pre("save", convertToLowercase);
+schema.pre("save", function (next) {
+  this.email = this.email.toLowerCase();
+  next();
+});
 
 const User = model("user", schema);
 
