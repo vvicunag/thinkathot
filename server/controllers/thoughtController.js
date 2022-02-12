@@ -89,8 +89,41 @@ module.exports = {
         }
       },
 
+      async addReaction(req, res) {
+        try {
+          const thought = await Thought.findOneAndUpdate(
+            { _id: req.params.thoughtId },
+            { $addToSet: { reactions: req.body } },
+            { new: true }
+          );
+          if (!thought) {
+            res.status(404).json({ message: 'No thought with this id!' });
+          } else {
+            res.json(thought);
+          }
+        }
+        catch (error) {
+          console.log(error);
+          res.status(500).json('Failed at adding the reaction');
+        }
+      },
     
-      // addReaction,
-      // removeReaction
-
+      async removeReaction(req, res) {
+        try {
+          const thought = await Thought.findByIdAndUpdate(
+            { _id: req.params.thoughtId },
+            { $pull: { reactions: req.params.reactionId } },
+            { new: true }
+          );
+          if (!thought) {
+            res.status(404).json({ message: 'No thought with this id!' });
+          } else {
+            res.json(thought);
+          }
+        }
+        catch (error) {
+          console.log(error);
+          res.status(500).json('Failed at removing the reaction');
+        }
+      }
 }
