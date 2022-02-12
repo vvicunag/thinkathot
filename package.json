@@ -4,7 +4,7 @@
   "description": "This is thinkathot! An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list",
   "main": "index.js",
   "scripts": {
-    "start": "npm run seed && node server/index.js",
+    "start": "node server/index.js",
     "dev": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

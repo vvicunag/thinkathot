@@ -15,6 +15,7 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
+            // get: getMyTime
             //getter method to format timestamp on query
         },
         username: {
@@ -26,6 +27,7 @@ const reactionSchema = new Schema(
         toJSON: {
             // Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
             virtuals: true,
+            getters: true,
           },
           id: false,
     }
