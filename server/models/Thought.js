@@ -1,5 +1,10 @@
 const { Schema, model } = require('mongoose');
 const Reaction = require('./Reaction');
+const moment = require('moment');
+
+const getTime = () => {
+    return moment().format("MMM Do YY");
+}
 
 const thoughtSchema = new Schema(
     {
@@ -12,7 +17,7 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            //getter method to format timestamp on query
+            get: (valueToFormat) => moment(valueToFormat).format("MMM Do YY"),
         },
         username: {
             type: String,
@@ -22,35 +27,20 @@ const thoughtSchema = new Schema(
     },
     {
         toJSON: {
-            // Create a virtual called `reactionCount` that retrieves the length of the thought's `reactions` array field on query.
             virtuals: true,
+            getters: true,
           },
           id: false,
     }
 );
 
+thoughtSchema.virtual('getReactions').get(function() {
+    return this.reactions.length
+});
+
+
 const schema = new Schema(thoughtSchema);
 
 const Thought = model("thought", schema);
-
-// seed thoughts to test database
-// const seed = async () => {
-//     try {
-//       const collection = await User.find({});
-  
-//       if (collection.length === 0) {
-//         await User.insertMany([
-//           { username: 'Pedro', email: 'pedro@gmail.com' },
-//           { username: 'Juan', email: 'juan@gmail.com' },
-//           { username: 'Diego', email: 'diego@gmail.com' },
-//         ]);
-//       }
-//       console.log('Already populated');
-//     } catch (error) {
-//       console.log('Error while seeding the data: ', error);
-//     }
-//   };
-
-// seed();
 
 module.exports = Thought;

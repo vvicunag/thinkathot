@@ -35,6 +35,10 @@ const userSchema = new Schema(
     }
 );
 
+userSchema.virtual('friendCount').get(function() {
+    return this.friends.length
+});
+
 const schema = new Schema(userSchema);
 
 // converts email into lower case before saving
@@ -74,26 +78,3 @@ const seed = async () => {
 seed();
 
 module.exports = User;
-
-
-// TODO: Create a virtual called `friendCount` that retrieves the length of the user's `friends` array field on query.
-// userSchema
-//   .virtual('fullName')
-//   // Getter
-//   .get(function () {
-//     return `${this.first} ${this.last}`;
-//   })
-//   // Setter to set the first and last name
-//   .set(function (v) {
-//     const first = v.split(' ')[0];
-//     const last = v.split(' ')[1];
-//     this.set({ first, last });
-//   });
-
-// // Create a virtual property `upvoteCount` that gets the amount of comments per user
-// postSchema
-//   .virtual('upvoteCount')
-//   // Getter
-//   .get(function () {
-//     return this.meta.upvotes;
-//   });
