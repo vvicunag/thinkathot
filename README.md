@@ -1,2 +1,23 @@
-# thinkathot
-This is thinkathot! An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list
+# Thinkathot - a Project by [vvicunag](http://github.com/vvicunag)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Table of Contents
+- [Project Description](#project-description)
+- [Installation Instructions](#installation-instructions)
+
+<a name='project-description'></a> 
+## Project description
+An API that uses Mongoose and Express. Social networking API for thoughts, reactions, and sharing with friends.
+
+<a name='installation-instructions'></a>
+## Installation Instructions
+Download repo and install corresponding dependencies. Use Insomnia or something similar to test. Follow the .env example.
+
+
+---
+Copyright 2022, Vicente Vicuna.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
