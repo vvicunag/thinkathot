@@ -110,9 +110,9 @@ module.exports = {
     
       async removeReaction(req, res) {
         try {
-          const thought = await Thought.findByIdAndUpdate(
+          const thought = await Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $pull: { reactions: req.params.reactionId } },
+            { $pull: { reactions: {_id: req.params.reactionId} } },
             { new: true }
           );
           if (!thought) {

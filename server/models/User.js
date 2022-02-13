@@ -39,23 +39,13 @@ userSchema.virtual('friendCount').get(function() {
     return this.friends.length
 });
 
-const schema = new Schema(userSchema);
-
 // converts email into lower case before saving
-schema.pre("save", function (next) {
+userSchema.pre("save", function (next) {
   this.email = this.email.toLowerCase();
   next();
 });
 
-// clientSchema.pre('remove', function(next) {
-//   // 'this' is the client being removed. Provide callbacks here if you want
-//   // to be notified of the calls' result.
-//   Sweepstakes.remove({client_id: this._id}).exec();
-//   Submission.remove({client_id: this._id}).exec();
-//   next();
-// });
-
-const User = model("user", schema);
+const User = model("user", userSchema);
 
 // seed users to test database
 const seed = async () => {
